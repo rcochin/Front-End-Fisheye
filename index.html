@@ -6,14 +6,16 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/cb09e93f31.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" />
+    <header aria-label="En-tête">
+        <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page" /></a>
         <h1>Nos photographes</h1>
     </header>
-    <main id="main">
-        <div class="photographer_section"></div>
+    <main id="main" aria-label="Contenu principal">
+        <section class="photographer_section"></section>
     </main>
     <script src="scripts/factories/Photographer.js"></script>
     <script src="scripts/pages/index.js"></script>

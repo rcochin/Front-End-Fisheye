@@ -37,14 +37,35 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    margin-top: 15px;
+    margin-bottom: 0px;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    object-fit: cover;
+    border-radius: 100%;
+    box-shadow: 0px 10px 5px -5px rgba(189,186,186,0.75);
+    -webkit-box-shadow: 0px 10px 5px -5px rgba(189,186,186,0.75);
+    -moz-box-shadow: 0px 10px 5px -5px rgba(189,186,186,0.75);
 }
+
+.photographer_section article a{text-decoration: none;}
+
+.photographer_section article div {line-height: 10px;}
+
+.photographer_section article div p:nth-child(1) {
+    font-size: 20px;
+    color: #901C1C;
+}
+
+.photographer_section article div p:nth-child(2) {font-size: 16px;}
+
+.photographer_section article div p:nth-child(3) {color: #525252;}

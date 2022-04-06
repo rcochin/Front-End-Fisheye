@@ -5,32 +5,98 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/cb09e93f31.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+        <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page" /></a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <main id="main" aria-hidden="false">
+      <section class="photograph-header">
+        <div class="user_section"></div>
+        <button class="contact_button" onclick="displayModal()" aria->Contactez-moi</button>
+        <div class="user_picture"></div>
+      </section>
+      <div class="filter-bloc">
+        <p>Trier par</p>
+        <select name="sort" id="filter" onchange="getMedia()" role="listbox">
+          <option value="1" role="option">Popularité</option>
+          <option value="2" role="option">Date</option>
+          <option value="3" role="option">Titre</option>
+        </select>
       </div>
+      <section class="container">
+        <div class="media-section">
+
+        </div>
+        <div class="slider" aria-hidden="true">
+          <div class="precedent"><i class="fas fa-angle-left"></i></div>
+          <div class="popup-section">
+            <span>&times;</span>
+          </div>
+          <div class="suivant"><i class="fas fa-angle-right"></i></div>
+        </div>
+      </section>
+      <div class="info-container"></div>
     </main>
-    <div id="contact_modal">
+    <section id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
+				<form onsubmit="return validate();" method ="get" aria-label="Formulaire de contact">
+          <input type="text" value="" id="value-id" name="id"/>
+          <div class="formData">
+            <label for="first" id="first">Prénom</label>
+            <input
+              class="text-control"
+              type="text"
+              id="first"
+              aria-required="true"
+              aria-labelledby="first"
+              aria-describedby="first"
+            />
+            <p class="error" id="prenomError"></p>
+          </div>
+          <div class="formData">
+            <label for="last" id="last">Nom</label>
+            <input
+              class="text-control"
+              type="text"
+              id="last"
+              aria-required="true"
+              aria-labelledby="last"
+              aria-describedby="last"
+            />
+            <p class="error" id="nomError"></p>
+          </div>
+          <div class="formData">
+            <label for="mail" id="email">E-mail</label>
+            <input
+              class="text-control"
+              type="text"
+              id="mail"
+              aria-labelledby="email"
+              aria-describedby="email"
+              aria-required="true"
+            />
+            <p class="error" id="mailError"></p>
+          </div>
+          <div class="formData">
+            <label for="message" id="messageTxt">Votre message</label>
+            <textarea id="message" cols="30" rows="10" aria-required="true" aria-labelledby="messageTxt" aria-describedby="messageTxt"></textarea>
+            <p class="error" id="messageError"></p>
+          </div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
-		</div>
+		</section>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="/scripts/factories/media.js"></script>
+    <script src="/scripts/utils/slider.js"></script>
   </body>
 </html>
