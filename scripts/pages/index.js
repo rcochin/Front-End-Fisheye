@@ -29,7 +29,7 @@
     
     
     function addParameterToURL(param){
-        _url = 'http://127.0.0.1:5500/photographer.html';
+        _url = 'https://rcochin.github.io/Front-End-Fisheye/photographer.html';
         _url += (_url.split('?')[1] ? '&':'?') + param;
         return _url;
     }
