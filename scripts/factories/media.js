@@ -15,24 +15,27 @@ function mediaFactory(data, photographername, count) {
         const coeur = document.createElement('p');
         const heartDIV = document.createElement('div');
         //attribution des contenus
-        mp4.setAttribute("class", "imgMedia");
-        mp4.setAttribute("data-id", count);
-        mp4.setAttribute("src", videoMP4);
-        mp4.setAttribute("type", "video/mp4")
-        img.setAttribute("class", "imgMedia");
-        img.setAttribute("data-id", count);
-        img.setAttribute("alt", title);
-        img.setAttribute("src", picture);
-        heartDIV.setAttribute("class", "heart-container");
         h3.textContent = title;
         coeur.textContent = likes;
         heart.setAttribute('class', 'fas fa-heart');
         heart.setAttribute('aria-hidden', 'true');
+        heartDIV.setAttribute("class", "heart-container");
         desc.setAttribute("class", "desc-media");
         imageDIV.setAttribute("class", "bloc-media");
         if(video){
+            mp4.setAttribute("class", "imgMedia");
+            mp4.setAttribute("id", "video");
+            mp4.setAttribute("data-id", count);
+            mp4.setAttribute("src", videoMP4);
+            mp4.setAttribute("type", "video/mp4");
+            mp4.autoplay = true;
+            mp4.loop = true;
             imageDIV.append(mp4, desc);
-        }else if(image){
+        }else{
+            img.setAttribute("class", "imgMedia");
+            img.setAttribute("data-id", count);
+            img.setAttribute("alt", title);
+            img.setAttribute("src", picture);
             imageDIV.append(img, desc);
         }
         heartDIV.append(coeur, heart);

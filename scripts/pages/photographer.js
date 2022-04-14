@@ -54,13 +54,6 @@ async function displayMedia(e, users) {
     });
     slider();
     const likeBtn = document.querySelectorAll('.fa-heart');
-    likeBtn.forEach((btn) => btn.addEventListener('click', function(){
-        var likeValue = this.previousSibling;
-        var newValue = parseInt(likeValue.innerHTML);
-        newValue++;
-        console.log(newValue)
-        likeValue.innerHTML = newValue;
-    }, {once : true}));
 
     var likes = document.querySelectorAll('.media-section .heart-container p');
     var totalLikes = 0;
@@ -68,12 +61,24 @@ async function displayMedia(e, users) {
     heartIcon.setAttribute('class', 'fas fa-heart');
     heartIcon.setAttribute('aria-hidden', 'true');
     const heart = document.createElement( 'p' );
+    heart.setAttribute('id', 'totalHeart');
     for(let i = 0; i < likes.length; i++){
         totalLikes = totalLikes + parseInt(likes[i].textContent);
-        console.log(totalLikes);
     }
     heart.append(totalLikes, heartIcon);
     infoContainer.insertAdjacentElement('afterbegin', heart);
+
+    var infoLike = document.getElementById("totalHeart");
+    likeBtn.forEach((btn) => btn.addEventListener('click', function(){
+        var likeValue = this.previousSibling;
+        var newValue = parseInt(likeValue.innerHTML);
+        var newTotalValue = parseInt(infoLike.innerHTML);
+        newValue++;
+        newTotalValue++;
+        likeValue.innerHTML = newValue;
+        heart.innerHTML = "";
+        heart.append(newTotalValue, heartIcon);
+    }, {once : true}));
 }
 
 
@@ -83,9 +88,6 @@ function filter(media){
     const byValue = (a,b) => a - b;
     const byDescending = (a,b) => b - a;
     const sortBySensitivity = sensitivity => (a, b) => a.localeCompare(b);
-    const chaine = "abc";
-    const chaine2 = "def";
-    console.log(chaine2.localeCompare(chaine));
 
     if(select.value == 1){
         const toLikes = e => e.likes;
@@ -94,14 +96,12 @@ function filter(media){
     }else if(select.value == 2){
         const toDate = e => new Date(e.date);
         const byDate = sortByMapped(toDate,byValue);
-        console.log([...media].sort(byDate));
         return [...media].sort(byDate);
     }else if(select.value == 3){
         const toTitle = e => e.title;
         const byVariant = sortByMapped(toTitle,sortBySensitivity('variant'));
         return [...media].sort(byVariant);
     }
-
 }
 
 async function init() {
@@ -112,6 +112,7 @@ async function init() {
         document.querySelector(".user_section").innerHTML = "";
         document.querySelector(".user_picture").innerHTML = "";
         document.querySelector(".media-section").innerHTML = "";
+        document.querySelector(".info-container").innerHTML = "";
         document.querySelector(".popup-section").innerHTML = "<span>&times;</span>";
         displayMedia(filter(data.media), data.photographers);
     })

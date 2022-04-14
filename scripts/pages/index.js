@@ -4,8 +4,6 @@
             return response.json();
           }).then(data => {
             photographer = data.photographers;
-            media = data.media;
-            tab = { photographer, media}
           }).then(() => {
             displayData(photographer);
           });
