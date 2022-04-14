@@ -1,6 +1,6 @@
 //Mettre le code JavaScript lié à la page photographer.html
 async function getMedia() {
-    return await fetch('../../data/photographers.json')
+    return await fetch('./data/photographers.json')
     .then(response => {
         return response.json();
       }).then(data => {
