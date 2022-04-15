@@ -1,6 +1,6 @@
 //Mettre le code JavaScript lié à la page photographer.html
 async function getMedia() {
-    return await fetch('./data/photographers.json')
+    return await fetch('../../data/photographers.json')
     .then(response => {
         return response.json();
       }).then(data => {
@@ -33,7 +33,8 @@ async function displayMedia(e, users) {
             h2.textContent = name;
             location.textContent = city + ', ' + country;
             desc.textContent = tagline;
-            img.setAttribute("src", picture)
+            img.setAttribute("src", picture);
+            img.setAttribute("alt",name);
             userSection.append(h2, location, desc);
             userPicture.append(img);
             const pricing = document.createElement( 'p' );

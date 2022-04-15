@@ -1,5 +1,5 @@
     async function getPhotographers() {
-        fetch('./data/photographers.json')
+        fetch('../../data/photographers.json')
         .then(response => {
             return response.json();
           }).then(data => {
@@ -29,7 +29,7 @@
     
     
     function addParameterToURL(param){
-        _url = 'https://rcochin.github.io/Front-End-Fisheye/photographer.html';
+        _url = 'http://127.0.0.1:5500/photographer.html';
         _url += (_url.split('?')[1] ? '&':'?') + param;
         return _url;
     }
