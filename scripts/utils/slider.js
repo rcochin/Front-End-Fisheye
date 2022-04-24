@@ -21,6 +21,11 @@ function slider(){
         imgSlider[i].setAttribute("aria-hidden","true");
     }
     
+    window.onkeyup = function (event) {
+        if (event.keyCode == 27 && document.querySelector('.slider').style.display == "block") {
+            document.querySelector('.slider').style.display = "none";
+        }
+    }
 
     document.onkeydown = function(evt) {
         evt = evt || window.event;

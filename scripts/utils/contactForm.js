@@ -6,6 +6,7 @@ function displayModal() {
   main.setAttribute("aria-hidden", "true");
 }
 
+
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     const main = document.getElementById("main");
@@ -14,10 +15,9 @@ function closeModal() {
     main.setAttribute("aria-hidden", "false");
 }
 
-
-document.onkeydown = function(evt) {
+document.onkeyup = function(evt) {
   evt = evt || window.event;
-  if (modal.getAttribute('aria-hidden') == 'false' && evt.keyCode === 27) {
+  if (evt.keyCode === 27) {
     closeModal()
   }
 };
